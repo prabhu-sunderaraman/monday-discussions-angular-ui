@@ -1,0 +1,19 @@
+// Layer 2: Semantic tokens — map primitives to roles.
+// Light theme is the default (defined here on :root).
+
+:root {
+  --color-surface-primary: var(--neutral--white);
+  --color-surface-secondary: var(--neutral--gray-50);
+  --color-text-primary: var(--neutral--gray-900);
+  --color-text-secondary: var(--neutral--gray-800);
+  --color-accent: var(--primary--blue);
+  --color-border: var(--neutral--gray-200);
+
+  --color-status-active: var(--status--green);
+  --color-status-pending: var(--status--amber);
+  --color-status-expired: var(--status--slate);
+  --color-status-cancelled: var(--status--red);
+
+  --header-background: var(--primary--blue);
+  --footer-background: var(--neutral--gray-100);
+}

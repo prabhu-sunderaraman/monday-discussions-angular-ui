@@ -1,0 +1,13 @@
+// Layer 3: Themes — each theme overrides the semantic tokens.
+// ThemeService toggles the `light` / `dark` class on the <body> element.
+
+.dark {
+  --color-surface-primary: var(--neutral--gray-900);
+  --color-surface-secondary: var(--neutral--gray-800);
+  --color-text-primary: var(--neutral--gray-50);
+  --color-text-secondary: var(--neutral--gray-100);
+  --color-accent: var(--primary--blue);
+
+  --header-background: var(--primary--blue-dark);
+  --footer-background: var(--neutral--black);
+}

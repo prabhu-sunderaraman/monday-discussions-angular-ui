@@ -1,0 +1,56 @@
+@if (policies().length === 0) {
+  <p class="policy-table__empty" role="status">{{ text.EMPTY }}</p>
+} @else {
+  <div class="policy-table__scroll">
+    <table class="policy-table">
+      <caption class="policy-table__caption">{{ text.CAPTION }}</caption>
+      <thead>
+        <tr>
+          <th scope="col">{{ text.COLUMNS.POLICY_NUMBER }}</th>
+          <th scope="col">{{ text.COLUMNS.POLICYHOLDER }}</th>
+          <th scope="col">{{ text.COLUMNS.LINE_OF_BUSINESS }}</th>
+          <th scope="col">{{ text.COLUMNS.STATUS }}</th>
+          <th scope="col" class="policy-table__num">{{ text.COLUMNS.PREMIUM }}</th>
+          <th scope="col">{{ text.COLUMNS.REGION }}</th>
+          <th scope="col">{{ text.COLUMNS.EFFECTIVE_DATE }}</th>
+          <th scope="col">{{ text.COLUMNS.EXPIRY_DATE }}</th>
+          <th scope="col">{{ text.COLUMNS.UNDERWRITER }}</th>
+          <th scope="col">{{ text.COLUMNS.FLAGGED }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (policy of policies(); track trackById($index, policy)) {
+          <tr>
+            <th scope="row">{{ policy.policyNumber }}</th>
+            <td>{{ policy.policyholderName }}</td>
+            <td>{{ policy.lineOfBusiness }}</td>
+            <td>
+              <span
+                class="policy-table__status"
+                [class]="'policy-table__status--' + statusModifier(policy.status)"
+              >
+                {{ policy.status }}
+              </span>
+            </td>
+            <td class="policy-table__num">
+              {{ policy.premiumAmount | currency: policy.currency }}
+            </td>
+            <td>{{ policy.region }}</td>
+            <td>{{ policy.effectiveDate | date: 'mediumDate' }}</td>
+            <td>{{ policy.expiryDate | date: 'mediumDate' }}</td>
+            <td>{{ policy.underwriter }}</td>
+            <td>
+              @if (policy.flaggedForReview) {
+                <span class="policy-table__flag" [attr.aria-label]="text.FLAGGED_BADGE_LABEL">
+                  {{ text.FLAGGED_YES }}
+                </span>
+              } @else {
+                {{ text.FLAGGED_NO }}
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

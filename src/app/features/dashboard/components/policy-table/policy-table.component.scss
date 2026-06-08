@@ -1,0 +1,87 @@
+:host {
+  display: block;
+}
+
+.policy-table__scroll {
+  overflow-x: auto;
+}
+
+.policy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+}
+
+.policy-table__caption {
+  text-align: left;
+  padding-block: var(--space--sm);
+  color: var(--color-text-secondary);
+}
+
+.policy-table th,
+.policy-table td {
+  padding: var(--space--sm) var(--space--md);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.policy-table thead th {
+  background-color: var(--color-surface-secondary);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+.policy-table tbody tr:hover {
+  background-color: var(--color-surface-secondary);
+}
+
+.policy-table__num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+// Status: text carries the meaning; color is a secondary cue (not color alone).
+.policy-table__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space--xs);
+  font-weight: 600;
+}
+
+.policy-table__status::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.policy-table__status--active {
+  color: var(--color-status-active);
+}
+.policy-table__status--pending {
+  color: var(--color-status-pending);
+}
+.policy-table__status--expired {
+  color: var(--color-status-expired);
+}
+.policy-table__status--cancelled {
+  color: var(--color-status-cancelled);
+}
+
+.policy-table__flag {
+  display: inline-block;
+  padding: var(--space--xs) var(--space--sm);
+  border-radius: var(--radius--sm);
+  background-color: var(--color-status-cancelled);
+  color: var(--color-surface-primary);
+  font-weight: 600;
+}
+
+.policy-table__empty {
+  padding: var(--space--lg);
+  color: var(--color-text-secondary);
+}

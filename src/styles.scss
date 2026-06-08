@@ -1,0 +1,12 @@
+/* Global entry point. Style layering order matters:
+   primitives -> semantic -> themes. */
+@use 'styles/tokens.primitives' as primitives;
+@use 'styles/tokens.semantic' as semantic;
+@use 'styles/themes' as themes;
+
+body {
+  margin: 0;
+  background-color: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}

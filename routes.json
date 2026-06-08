@@ -1,0 +1,5 @@
+{
+  "/api/*": "/$1",
+  "/policies/flagged": "/policies?flaggedForReview=true",
+  "/policies/active": "/policies?status=Active"
+}

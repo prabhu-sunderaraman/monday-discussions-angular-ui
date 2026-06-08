@@ -1,0 +1,34 @@
+<section class="dashboard" aria-labelledby="dashboard-title">
+  <header class="dashboard__header">
+    <h1 id="dashboard-title" class="dashboard__title">{{ text.TITLE }}</h1>
+    <p class="dashboard__subtitle">{{ text.SUBTITLE }}</p>
+  </header>
+
+  <dl class="dashboard__summary" [attr.aria-label]="text.SUMMARY_REGION_LABEL">
+    <div class="dashboard__stat">
+      <dt>{{ text.SUMMARY_TOTAL }}</dt>
+      <dd>{{ total() }}</dd>
+    </div>
+    <div class="dashboard__stat">
+      <dt>{{ text.SUMMARY_ACTIVE }}</dt>
+      <dd>{{ activeCount() }}</dd>
+    </div>
+    <div class="dashboard__stat">
+      <dt>{{ text.SUMMARY_FLAGGED }}</dt>
+      <dd>{{ flaggedCount() }}</dd>
+    </div>
+  </dl>
+
+  @if (loading()) {
+    <p class="dashboard__status" role="status">{{ text.LOADING }}</p>
+  } @else if (error(); as err) {
+    <div class="dashboard__error" role="alert">
+      <p>{{ err.message }}</p>
+      <button type="button" class="dashboard__retry" (click)="load()">
+        {{ text.RETRY }}
+      </button>
+    </div>
+  } @else {
+    <app-policy-table [policies]="policies()" />
+  }
+</section>
